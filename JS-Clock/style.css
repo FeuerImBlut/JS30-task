@@ -1,0 +1,221 @@
+:root {
+  --bg-color: #f2f2f2;
+  --main-color: #0d0d0d;
+  --secondary-color: #EFEFEF;
+  --back-picture: url("pictures/light-back.jpg");
+  --marking-color: #6a3d72;
+}
+
+.dark {
+	--bg-color: #000000;
+	--main-color: #f2f2f2;
+	--secondary-color: #101010;
+	--back-picture: url("pictures/dark-back.jpg");
+	--marking-color: #bac2e3;
+}
+
+.invert {
+	filter: invert(1);
+}
+
+html {
+      background: var(--back-picture); /*url(https://unsplash.it/1500/1000?image=881&blur=5)*/
+      background-size: cover;
+      font-family: 'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+	  transition: all 0.5s ease-in;
+    }
+
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+	  flex-direction: column;
+      flex: 1;
+      min-height: 100vh;
+      align-items: center;
+    }
+	
+.mode-button {
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+	margin: 50px auto 100px auto;
+    border: 0;
+    border-radius: 10%;
+    padding: 8px 12px;
+    position: absolute;
+    top: 70px;
+}
+    .clock {
+	  backdrop-filter: blur(3px);
+      width: 30rem;
+      height: 30rem;
+      border: 20px solid transparent;
+      border-radius: 50%;
+      margin: 160px auto;
+      position: absolute;
+	  top: 100px;
+      padding: 2rem;
+      box-shadow:
+        0 0 0 4px var(--main-color),
+        inset 0 0 0 3px var(--main-color),
+        inset 0 0 10px var(--secondary-color),
+        0 0 10px var(--bg-color)
+    }
+	
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      /*transform: translateY(-3px); /* account for the height of the clock hands*/
+    }
+	
+	.outer-clock-face::after {
+		transform: rotate(90deg);
+	}
+	
+	.outer-clock-face .marking {
+		position: absolute;
+		height: 100%;
+		background: transparent;
+		z-index: 0;
+		left: 49%;
+		transform-origin: 100%;
+		margin: auto;
+}
+
+	.outer-clock-face .marking {
+		width: 3px;
+		}
+	
+	.inner-clock-face {
+		position: absolute;
+		top: 9%;
+		left: 10%;
+		width: 80%;
+		height: 80%;
+		/*background-color: var(--bg-color);*/
+		border-radius: 100%;
+		z-index: 1;
+	}
+
+	.inner-clock-face::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 16px;
+		height: 16px;
+		border-radius: 18px;
+		margin-left: -9px;
+		margin-top: -6px;
+		background: var(--main-color);
+		z-index: 10;
+		
+	}
+
+    .hand {
+      width: 50%;
+	  right: 50%;
+      height: 6px;
+      background: var(--main-color);
+      position: absolute;
+      top: 50%;
+	  border-radius: 50% 0% 0% 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+	  transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1));
+	  z-index: 2;
+    }
+	
+	.outer-clock-face .marking.marking-one {
+		transform: rotate(30deg)
+	}
+
+	.outer-clock-face .marking.marking-two {
+		transform: rotate(60deg)
+	}
+
+	.outer-clock-face .marking.marking-three {
+		transform: rotate(120deg)
+	}
+
+	.outer-clock-face .marking.marking-four {
+		transform: rotate(150deg)
+	}
+	
+	.outer-clock-face .marking.marking-five {
+		transform: rotate(90deg)
+	}
+			
+	.outer-clock-face .marking.marking-six {
+		transform: rotate(180deg)
+	}
+	
+	.mini,
+	.mini::before,
+	.mini::after	{
+		position: absolute;
+		height: 100%;
+		width: 100%;
+	}
+	
+	.mini::before {
+		content: '';
+		height: 10%;
+		bottom : 0px;
+		left: 0px;
+		background-color: var(--marking-color);
+	}
+	
+	.mini::after {
+		content: '';
+		height: 10%;
+		top : 0px;
+		left: 0px;
+		background-color: var(--marking-color);
+	}
+	
+	.second-hand {
+		height: 1px;		
+	}
+	
+	.minute-hand {
+		width: 45%;
+		height: 4px;
+	}
+	
+	.hour-hand {
+		width: 40%;
+	}
+	
+	.time-text {
+		font: 1.5em "Fira Sans", sans-serif;
+		width: auto;
+		height: auto;
+		/*backdrop-filter: grayscale(100%);*/
+		margin-top: 50px;
+		background: transparent;
+		color: var(--main-color);
+		
+	}
+	
+	.hours-text {
+		align-items: center;
+		position: absolute;
+		top : -40px;
+		left: -18px;
+		width: 40px;
+		color: var(--main-color);
+		font-weight: bold;
+
+	}
+	
+	.turned {
+		transform: rotate(180deg);
+		bottom: -40px;
+	}
